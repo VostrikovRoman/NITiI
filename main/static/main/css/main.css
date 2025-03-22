@@ -107,6 +107,11 @@ span.error{color: var(--red); font-size: 17px;}
 }
 form.search{width: 100%;}
 .search_box{display: flex;}
+.pagination{display: flex; justify-content: center; align-items: center;}
+.page-link{background: transparent; border: solid 2px transparent; color: var(--purple);}
+.page-link:hover{background-color: transparent; border:solid 2px var(--blue); color: var(--purple);}
+.page-link:focus{background: transparent; color: var(--purple); box-shadow: none;}
+.page-link.no_hover:hover{border: solid 2px transparent;}
 
 
 :root{

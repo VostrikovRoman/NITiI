@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from .models import Groups, Specialities
 from django.views.generic import DetailView, UpdateView, DeleteView
 from .forms import GroupsForm
+from django.core.paginator import Paginator
 
 
 
@@ -9,7 +10,11 @@ def groups (request):
     s=request.GET.get('search','')
     groups = Groups.objects.filter(name__icontains = s).order_by('name')
     specialities = Specialities.objects.all()
-    return render(request, 'groups/groups.html', {'groups':groups, 'specialities':specialities})
+
+    pagination = Paginator(groups, 10)
+    page_number = request.GET.get("page")
+    page_obj = pagination.get_page(page_number)
+    return render(request, 'groups/groups.html', {'groups':pagination, 'specialities':specialities, 'page_obj':page_obj})
 
 def add (request):
     error = ''
