@@ -1,0 +1,26 @@
+{% extends 'main/layout.html' %}
+
+
+{% block title %}НИТиИ - Добавить группу{% endblock %}
+{% block content %}
+    <h2 class="title">Добавить группу</h2>
+    <div class="container text-center">
+        <div class="text-center"><span class="error">{{error}}</span></div>
+        <form method="POST" class="form text-center">
+            {% csrf_token %}
+            <label for="name">Наименование<span>*</span></label>
+            {{ form.name }}
+            <label for="course">Курс<span>*</span></label>
+            {{ form.course }}
+            <label for="speciality">Специальность<span>*</span></label>
+            {{ form.speciality }}
+            <label for="count_of_students">Количество студентов<span>*</span></label>
+            {{ form.count_of_students }}
+            <div class="text-center">
+                <button class="btn button_option" type="submit">Готово</button>
+            </div>
+        </form>
+    </div>
+    
+    {% include 'main/footer.html' %}
+{% endblock %}

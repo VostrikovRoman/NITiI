@@ -1,0 +1,32 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+
+{% block title %}НИТиИ - Главная{% endblock %}
+{% block content %}
+    <h2 class="title">НИТиИ - место, где воплощаются идеи</h2>
+    <img src="{% static 'main/img/it-specialist-server-farm-minimizing-failure-machines.jpg' %}" class="rounded text-center background">
+    <h2 class="title">Новости</h2>
+    <div class="container text-center">
+        <a href=""><p class="link">Все новости</p></a>
+        <div class="row align-items-start">
+            <div class="col">
+                <a href="">
+                    <img src="{% static 'main/img/engineer-wearing-vr-headset-data-center-installing-software.jpg' %}"class="rounded text-center img_news">
+                </a>
+            </div>
+            <div class="col">
+                <a href="">
+                <img src="{% static 'main/img/group-young-business-people-working-office (1).jpg' %}"class="rounded text-center img_news">
+                </a>
+            </div>
+            <div class="col">
+                <a href="">
+                    <img src="{% static 'main/img/group-young-business-people-working-office.jpg' %}"class="rounded text-center img_news">
+                </a>
+            </div>
+        </div>
+    </div>
+    <h2 class="title">О нас</h2>
+    <p class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    {% include 'main/footer.html' %}
+{% endblock %}

@@ -1,0 +1,19 @@
+{% load static %}
+<div class="footer rounded">
+    <div class="row align-items-start">
+        <div class="col">
+            <img src="{% static 'main/img/interactive_blue.png' %}">
+            <p class="logo">НИТиИ</p>
+        </div>
+        <div class="col">
+            <p class="footer_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        </div>
+        <div class="col"></div>
+        <div class="col">
+            <a href="{% url 'main' %}"><p class="footer_text">Главная</p></a>
+            <a href="{% url 'students' %}"><p class="footer_text">Студенты</p></a>
+            <a href="{% url 'groups' %}"><p class="footer_text">Группы</p></a>
+            <a href="{% url 'contacts' %}"><p class="footer_text">Контакты</p></a>
+        </div>
+    </div>
+</div>

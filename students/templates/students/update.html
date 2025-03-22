@@ -1,0 +1,32 @@
+{% extends 'main/layout.html' %}
+
+
+{% block title %}НИТиИ - Изменить данные студента{% endblock %}
+{% block content %}
+    <h2 class="title">Изменить данные студента</h2>
+    <div class="container text-center">
+        <div class="text-center"><span class="error">{{error}}</span></div>
+        <form method="POST" class="form text-center">
+            {% csrf_token %}
+            <label for="surname">Фамилия<span>*</span></label>
+            {{ form.surname }}
+            <label for="name">Имя<span>*</span></label>
+            {{ form.name }}
+            <label for="lastname">Отчество</label>
+            {{ form.lastname }}
+            <label for="gender">Пол<span>*</span></label>
+            {{ form.gender }}
+            <label for="birthday">Дата рождения<span>*</span></label>
+            {{ form.birthday }}
+            <label for="group">Группа<span>*</span></label>
+            {{ form.group }}
+            <label for="is_leader">Является ли старостой группы?<span>*</span></label>
+            {{ form.is_leader }}
+            <div class="text-center">
+                <button class="btn button_option" type="submit">Готово</button>
+            </div>
+        </form>
+    </div>
+    
+    {% include 'main/footer.html' %}
+{% endblock %}

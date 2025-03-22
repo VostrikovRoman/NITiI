@@ -1,0 +1,31 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+
+
+{% block title %}НИТиИ - {{group.name}} {% endblock %}
+{% block content %}
+    <h2 class="title">О группе</h2>
+    <div class="container student_info">
+        <p class="text"><b>Наименование группы:</b> {{group.name}}</p>
+        <p class="text"><b>Курс: </b>{{group.course}}</p>
+        <p class="text"><b>Специальность: </b>{{group.speciality}}</p>
+        <p class="text"><b>Студенты: </b></p>
+        {% for s in group.students_set.all %}
+            {%  if s.is_leader %}
+                <p class="text" style="margin-left: 20px;">{{s.surname}} {{s.name}} {{s.lastname}} (староста) </p>
+            {% else %}
+                <p class="text" style="margin-left: 20px;">{{s.surname}} {{s.name}} {{s.lastname}} </p>
+            {% endif %}
+        {%  endfor %}
+    </div>
+    <div class="container text-center">
+        <div class="row">
+            <div class="col empty"></div>
+            <div class="col"><a href="{% url 'group_update' group.id %}" class="btn text-center button_option">Изменить</a></div>
+            <div class="col"><a href="{% url 'group_delete' group.id%}" class="btn text-center button_option">Удалить</a></div>
+            <div class="col empty"></div>
+        </div>
+    </div>
+    
+    {% include 'main/footer.html' %}
+{% endblock %}

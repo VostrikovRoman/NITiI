@@ -1,0 +1,44 @@
+{% extends 'main/layout.html' %}
+
+
+{% block title %}НИТиИ - Академические группы{% endblock %}
+{% block content %}
+    <h2 class="title">Группы</h2>
+    <div class="search_box">
+        <form method="GET" class="search text-center" >
+            <input type="text" placeholder="Поиск" class="form-control" name="search">
+        </form>
+    </div>
+    <div class="container text-center student_list">
+        {% if groups %}
+            <div class="row header">
+                <div class="col">Группа</div>
+                <div class="col">Специальность</div>
+                <div class="col">Количество студентов</div>
+            </div>
+            {% for elem in groups %}
+                <a href="{% url 'group_page' elem.id %}">
+                    <div class="row student_list">
+                        <div class="col">
+                            {{elem.name}}
+                        </div>
+                        <div class="col">
+                            {% for i in specialities %}
+                                {% if elem.speciality_id == i.id %}
+                                    {{i.name}}
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                        <div class="col">
+                            {{elem.count_of_students}}
+                        </div>
+                    </div>
+                </a>
+            {% endfor %}
+        {% else %}
+                <p class="text">Пока нет групп</p>
+        {% endif %}
+        <a href="{% url 'add_group' %}" class="btn text-center button_option">Добавить группу</a>
+    </div>
+    {% include 'main/footer.html' %}
+{% endblock %}

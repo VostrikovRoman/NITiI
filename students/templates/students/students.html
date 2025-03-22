@@ -1,0 +1,39 @@
+{% extends 'main/layout.html' %}
+
+
+{% block title %}НИТиИ - Наши студенты{% endblock %}
+{% block content %}
+    <h2 class="title">Наши студенты</h2>
+    <div class="search_box">
+        <form method="GET" class="search text-center" >
+            <input type="text" placeholder="Поиск" class="form-control" name="search">
+        </form>
+    </div>
+    
+    <div class="container text-center student_list">
+        {% if students %}
+            <div class="row header">
+                <div class="col">ФИО</div>
+                <div class="col">Группа</div>
+            </div>
+            {% for elem in students %}
+                <a href="{% url 'student_page' elem.id %}">
+                    <div class="row student_list">
+                        <div class="col">
+                            {{elem.surname}} {{elem.name}} {{elem.lastname}}
+                        </div>
+                        <div class="col">
+                            {{elem.group}}
+                        </div>
+                    </div>
+                </a>
+            {% endfor %}
+        {% else %}
+                <p class="text">Пока нет студентов</p>
+        {% endif %}
+        <a href="{% url 'add_student' %}" class="btn text-center button_option">Добавить студента</a>
+    </div>
+    
+    
+    {% include 'main/footer.html' %}
+{% endblock %}

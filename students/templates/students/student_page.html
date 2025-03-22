@@ -1,0 +1,43 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+
+
+{% block title %}НИТиИ - {{student.surname}} {{student.name}} {{student.lastname}} {% endblock %}
+{% block content %}
+    <h2 class="title">О студенте</h2>
+    <div class="container student_info">
+        <div class="row">
+            <div class="col">
+                <div class="photo_container">
+                    {% if student.photo %}
+                        <img src="{{student.photo.url}}" class="rounded text-center student_photo">
+                    {% else %}
+                        <img src="{% static 'main/img/interactive_blue.png' %}" class="rounded text-center student_photo">
+                    {% endif %}
+                </div>
+            </div>
+            <div class="col">
+                <p class="text"><b>ФИО:</b> {{student.surname}} {{student.name}} {{student.lastname}}</p>
+                <p class="text"><b>Пол:</b> {{student.gender}}</p>
+                <p class="text"><b>Группа:</b> {{student.group}}
+                    {% if student.is_leader == True %}
+                        (является старостой группы)
+                    {% endif %}
+                </p>
+                <p class="text"><b>Курс:</b> {{student.group.course}}</p>
+                <p class="text"><b>Специальность:</b> {{student.group.speciality}}</p>
+                <p class="text"><b>Дата рождения:</b> {{student.birthday}}</p>
+            </div>
+        </div>
+    </div>
+    <div class="container text-center">
+        <div class="row">
+            <div class="col empty"></div>
+            <div class="col"><a href="{% url 'student_update' student.id %}" class="btn text-center button_option">Изменить</a></div>
+            <div class="col"><a href="{% url 'student_delete' student.id%}" class="btn text-center button_option">Удалить</a></div>
+            <div class="col empty"></div>
+        </div>
+    </div>
+    
+    {% include 'main/footer.html' %}
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends 'main/layout.html' %}
+
+
+{% block title %}НИТиИ - Удалить группу{% endblock %}
+{% block content %}
+    <h2 class="title">Удалить группу</h2>
+    <p class="text text-center">Вы точно собираетесь удалить группу? Это действие невозможно отменить.</p>
+    <div class="container text-center">
+        <div class="text-center"><span class="error">{{error}}</span></div>
+        <form method="POST" class="form text-center">
+            {% csrf_token %}
+            <div class="text-center">
+                <button class="btn button_option" type="submit">Удалить</button>
+            </div>
+        </form>
+    </div>
+    
+    {% include 'main/footer.html' %}
+{% endblock %}
